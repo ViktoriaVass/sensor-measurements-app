@@ -4,11 +4,13 @@ import { NativeScriptRouterModule } from '@nativescript/angular'
 
 import { ItemsComponent } from './item/items.component'
 import { ItemDetailComponent } from './item/item-detail.component'
+import { MeasurementComponent } from './measurement/measurement.component'
+import { SensorComponent } from './sensor/sensor.component'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/items', pathMatch: 'full' },
-  { path: 'items', component: ItemsComponent },
-  { path: 'item/:id', component: ItemDetailComponent },
+  { path: '', redirectTo: '/sensor', pathMatch: 'full' },
+  { path: 'sensor', component: SensorComponent },
+  { path: 'sensor/:id', component: ItemDetailComponent },    //SensorDetail !!!
 ]
 
 @NgModule({

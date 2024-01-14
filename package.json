@@ -15,13 +15,15 @@
     "@nativescript/angular": "~17.0.0",
     "@nativescript/core": "~8.5.0",
     "@nativescript/theme": "~3.0.2",
+    "nativescript-angular-cli": "^0.1.9",
     "rxjs": "~7.8.0",
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~17.0.0",
     "@angular/compiler-cli": "~17.0.0",
-    "@nativescript/preview-cli": "^1.0.12",
+    "@nativescript/preview-cli": "1.0.12",
+    "@nativescript/schematics": "^11.2.0",
     "@nativescript/stackblitz": "0.0.8",
     "@nativescript/tailwind": "^2.0.1",
     "@nativescript/types-minimal": "~8.5.0",
