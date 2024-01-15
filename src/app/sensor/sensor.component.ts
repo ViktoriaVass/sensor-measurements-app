@@ -9,23 +9,6 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './sensor.component.html',
 })
 export class SensorComponent implements OnInit {
-    sensors: ISensor[];
-    public sensorsTest: ISensor[] = [
-        {
-            "sensor_id": 1,
-            "name": "Test Sensor 1",
-            "location": "Test Location 1",
-            "isActive": true,
-            "type": "test"
-        },
-        {
-            "sensor_id": 2,
-            "name": "Test Sensor 2",
-            "location": "Test Location 2",
-            "isActive": false,
-            "type": "test"
-        }
-    ];
 
     constructor(
         public storeService: StoreService,
@@ -34,9 +17,23 @@ export class SensorComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.backendService.getSensors().subscribe(() => {
-            this.sensors;
-          });
-    }
-}
+      this.backendService.getSensors().subscribe(
+        (data) => {
+          console.log('Sensors loaded:', data);
+          this.storeService.sensors = data;
 
+          if (this.storeService.sensors && this.storeService.sensors.length > 0) {
+            console.log('Sensors array is not empty.');
+          } else {
+            console.log('Sensors array is empty.');
+          }
+
+        },
+        (error) => {
+          console.error('Error fetching sensors:', error);
+        }
+      );
+    }
+    
+      
+}

@@ -1,7 +1,7 @@
 <StackLayout>
-    <Label text="Sensor Names:" class="h2 text-center"></Label>
-    <!-- cenge it to this.sensorsTest to this.sensors to use DB -->
-    <StackLayout *ngFor="let sensor of this.sensorsTest">     
-        <Label [text]="sensor.name" class="text-lg text-gray-500 p-4"></Label>
-    </StackLayout>
+  <Label text="Sensor Names:" class="h2 text-center"></Label>
+  <!-- cenge it to this.sensorsTest to this.sensors to use DB -->
+  <StackLayout *ngFor="let sensor of this.storeService.sensors">     
+      <Label [text]="sensor.name" class="text-lg text-gray-500 p-4"></Label>
+  </StackLayout>
 </StackLayout>
