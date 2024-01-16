@@ -1,0 +1,12 @@
+<ActionBar [title]="sensorName"></ActionBar>
+
+<ScrollView>
+  <StackLayout>
+    <StackLayout *ngFor="let measurement of measurements">
+      <Label [text]="measurement.timestamp.replace('T', ' ').slice(0, 16)" class="timestamp-text"></Label>
+      <Label [text]="'Temperature: ' + measurement.temperature + ' °C'" class="measurement-label"></Label>
+      <Label [text]="'Humidity: ' + measurement.humidity + ' %'" class="measurement-label-last"></Label>
+      <Label text=""></Label>
+    </StackLayout>
+  </StackLayout>
+</ScrollView>

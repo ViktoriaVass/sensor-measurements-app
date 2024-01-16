@@ -1,7 +1,19 @@
-<StackLayout>
-  <Label text="Sensor Names:" class="h2 text-center"></Label>
-  <!-- cenge it to this.sensorsTest to this.sensors to use DB -->
-  <StackLayout *ngFor="let sensor of this.storeService.sensors">     
-      <Label [text]="sensor.name" class="text-lg text-gray-500 p-4"></Label>
+<ActionBar title="My Sensors"></ActionBar>
+
+<ScrollView>
+  <StackLayout>
+    <StackLayout *ngFor="let sensor of this.storeService.sensors" [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
+      <Label [text]="sensor.name" class="sensor-name-text" (tap)="onSensorTap(sensor.sensor_id)"></Label>
+
+      <StackLayout *ngIf="lastMeasurements[sensor.sensor_id]">
+        <Label [text]="'Last Measurement: ' + lastMeasurements[sensor.sensor_id]?.timestamp.replace('T', ' ').slice(0, 16)" class="sensor-label"></Label>
+        <Label [text]="'Temperature: ' + lastMeasurements[sensor.sensor_id]?.temperature + ' °C'" class="sensor-label"></Label>
+        <Label [text]="'Humidity: ' + lastMeasurements[sensor.sensor_id]?.humidity + ' %'" class="sensor-label-last"></Label>
+      </StackLayout>
+
+      <StackLayout *ngIf="!lastMeasurements[sensor.sensor_id]">
+        <Label text="No measurements yet" class="sensor-label-last"></Label>
+      </StackLayout>
+    </StackLayout>
   </StackLayout>
-</StackLayout>
+</ScrollView>
