@@ -1,0 +1,9 @@
+<ActionBar title="Chart"></ActionBar>
+<GridLayout class="chart-style">
+    <RadCartesianChart tkExampleTitle>
+        <DateTimeCategoricalAxis tkCartesianHorizontalAxis dateFormat="MM/dd" ></DateTimeCategoricalAxis>
+        <LinearAxis tkCartesianVerticalAxis></LinearAxis>
+
+        <LineSeries tkCartesianSeries [items]="chartData" categoryProperty="Category" valueProperty="Value"></LineSeries>
+    </RadCartesianChart>
+</GridLayout>

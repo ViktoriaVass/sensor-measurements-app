@@ -19,12 +19,9 @@ export class BackendService {
     // !!! `http://YOUR-IP:8090/sensor` !!!
     return this.http.get<ISensor[]>("http://192.168.1.4:8090/sensor").pipe(
       map(data => {
-        console.log('Raw response data:', data);
 
         const serializedData = JSON.stringify(data);
         const parsedData = JSON.parse(serializedData);
-
-        console.log('Parsed data:', parsedData);
 
         this.storeService.sensors = parsedData.sort((a, b) => +a.sensor_id - +b.sensor_id);
 
@@ -39,12 +36,9 @@ export class BackendService {
     // !!! `http://YOUR-IP:8090/sensor/...` !!!
     return this.http.get<IMeasurement[]>("http://192.168.1.4:8090/measurement").pipe(
       map(data => {
-        console.log('Raw response data:', data);
 
         const serializedData = JSON.stringify(data);
         const parsedData = JSON.parse(serializedData);
-
-        console.log('Parsed data:', parsedData);
 
         this.storeService.measurements = parsedData.sort((a, b) => +a.measurement_id - +b.measurement_id);
 

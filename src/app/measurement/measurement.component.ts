@@ -1,5 +1,3 @@
-// measurement.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../shared/store.service';
 import { IMeasurement } from '../shared/interfaces/Measurement';

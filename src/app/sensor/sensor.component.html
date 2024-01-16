@@ -1,5 +1,4 @@
 <ActionBar title="My Sensors"></ActionBar>
-
 <ScrollView>
   <StackLayout>
     <StackLayout *ngFor="let sensor of this.storeService.sensors" [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
