@@ -10,7 +10,6 @@ import { AppComponent } from './app.component'
 import { MeasurementComponent } from './measurement/measurement.component'
 import { SensorComponent } from './sensor/sensor.component'
 import { ChartComponent } from './chart/chart.component'
-import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -18,8 +17,7 @@ import { MenuComponent } from './menu/menu.component';
     AppComponent, 
     MeasurementComponent, 
     SensorComponent,
-    ChartComponent,
-    MenuComponent
+    ChartComponent
   ],
     imports: [
     NativeScriptModule,

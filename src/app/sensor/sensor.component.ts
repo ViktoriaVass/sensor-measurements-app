@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../shared/store.service';
 import { BackendService } from '../shared/backend.service';
-import { ISensor } from '../shared/interfaces/Sensor';
 import { HttpClient } from '@angular/common/http';
 import { RouterExtensions } from '@nativescript/angular';
 import { IMeasurement } from '../shared/interfaces/Measurement';
@@ -19,7 +18,7 @@ export class SensorComponent implements OnInit {
     private backendService: BackendService,
     private http: HttpClient,
     private routerExtensions: RouterExtensions
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.backendService.getSensors().subscribe(
@@ -42,7 +41,7 @@ export class SensorComponent implements OnInit {
 
   loadLastMeasurements() {
     this.storeService.sensors.forEach((sensor) => {
-      const apiUrl = `http://192.168.17.173:8090/sensor/${sensor.sensor_id}/measurements`;
+      const apiUrl = this.backendService.ipAddress + `/sensor/${sensor.sensor_id}/measurements`;
       this.http.get<IMeasurement[]>(apiUrl).subscribe(
         (data: IMeasurement[]) => {
           const sortedMeasurements = data.sort((a, b) => {

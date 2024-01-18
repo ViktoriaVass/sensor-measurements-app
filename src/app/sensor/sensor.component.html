@@ -10,16 +10,16 @@
           class="sensor-label"></Label>
         <Label [text]="'Temperature: ' + lastMeasurements[sensor.sensor_id]?.temperature + ' °C'"
           class="sensor-label"></Label>
-        <Label [text]="'Humidity: ' + lastMeasurements[sensor.sensor_id]?.humidity + ' %'"
-          class="sensor-label"></Label>
+        <Label [text]="'Humidity: ' + lastMeasurements[sensor.sensor_id]?.humidity + ' %'" class="sensor-label"></Label>
 
-          <StackLayout [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
-            <Label [text]="'Last 10 Measurements'" class="sensor-option-last" (tap)="onSensorTap(sensor.sensor_id)"></Label>
-          </StackLayout>
-          <StackLayout [nsRouterLink]="['/chart', sensor.sensor_id, 'measurements']">
-            <Label [text]="'Chart'" class="sensor-option-chart" (tap)="onChartTap(sensor.sensor_id)"></Label>
-          </StackLayout>
-    
+        <StackLayout [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
+          <Label [text]="'Last 10 Measurements'" class="sensor-option-last"
+            (tap)="onSensorTap(sensor.sensor_id)"></Label>
+        </StackLayout>
+        <StackLayout [nsRouterLink]="['/chart', sensor.sensor_id, 'measurements']">
+          <Label [text]="'Chart'" class="sensor-option-chart" (tap)="onChartTap(sensor.sensor_id)"></Label>
+        </StackLayout>
+
       </StackLayout>
 
       <StackLayout *ngIf="!lastMeasurements[sensor.sensor_id]">
