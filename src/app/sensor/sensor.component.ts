@@ -42,7 +42,7 @@ export class SensorComponent implements OnInit {
 
   loadLastMeasurements() {
     this.storeService.sensors.forEach((sensor) => {
-      const apiUrl = `http://192.168.1.4:8090/sensor/${sensor.sensor_id}/measurements`;
+      const apiUrl = `http://192.168.17.173:8090/sensor/${sensor.sensor_id}/measurements`;
       this.http.get<IMeasurement[]>(apiUrl).subscribe(
         (data: IMeasurement[]) => {
           const sortedMeasurements = data.sort((a, b) => {
@@ -62,5 +62,9 @@ export class SensorComponent implements OnInit {
 
   onSensorTap(sensorId: number) {
     this.routerExtensions.navigate(['/sensor', sensorId, 'measurements']);
+  }
+
+  onChartTap(sensorId: number) {
+    this.routerExtensions.navigate(['/chart', sensorId, 'measurements']);
   }
 }

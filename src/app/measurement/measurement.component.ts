@@ -1,5 +1,3 @@
-// measurement.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { StoreService } from '../shared/store.service';
 import { IMeasurement } from '../shared/interfaces/Measurement';
@@ -27,7 +25,7 @@ export class MeasurementComponent implements OnInit {
 
   ngOnInit() {
     const id = +this.route.snapshot.params.id;
-    const apiUrl = `http://192.168.1.4:8090/sensor/${id}/measurements`;
+    const apiUrl = `http://192.168.17.173:8090/sensor/${id}/measurements`;
     const sensor = this.storeService.sensors.find((s) => s.sensor_id === id);
 
     this.sensorName = sensor ? sensor.name : '';
@@ -35,7 +33,8 @@ export class MeasurementComponent implements OnInit {
     this.http.get<IMeasurement[]>(apiUrl).subscribe(
       (data: IMeasurement[]) => {
         // Reverse the array to get the most recent measurements first
-        this.measurements = data.reverse().slice(0, 10);
+        this.measurements = data.sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+        this.measurements = this.measurements.reverse().slice(0, 10);
       },
       (error) => {
         console.error('Error fetching measurements:', error);

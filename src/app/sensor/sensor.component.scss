@@ -9,10 +9,9 @@
     font-size: 16;
     color: gray;
     padding-left: 30;
-    padding-bottom: 30;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding-bottom: 30;
   }
-
 
   .sensor-name-text {
     font-size: 20;
@@ -23,3 +22,18 @@
     font-weight: bold;
   }
   
+  .sensor-option-last {
+    color: rgb(211, 232, 247);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 17;
+    padding: 5, 10, 0, 30;
+  }
+
+  .sensor-option-chart {
+    color: rgb(211, 232, 247);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 17;
+    padding: 5, 10, 30, 30;
+  }
