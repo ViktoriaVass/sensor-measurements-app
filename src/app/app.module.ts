@@ -12,7 +12,6 @@ import { SensorComponent } from './sensor/sensor.component'
 import { ChartComponent } from './chart/chart.component'
 import { MenuComponent } from './menu/menu.component';
 
-
 @NgModule({
   bootstrap: [AppComponent],
   declarations: [

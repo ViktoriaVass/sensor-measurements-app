@@ -17,7 +17,7 @@ export class BackendService {
 
   public getSensors(): Observable<ISensor[]> {
     // !!! `http://YOUR-IP:8090/sensor` !!!
-    return this.http.get<ISensor[]>("http://192.168.1.4:8090/sensor").pipe(
+    return this.http.get<ISensor[]>("http://192.168.17.173:8090/sensor").pipe(
       map(data => {
 
         const serializedData = JSON.stringify(data);
@@ -34,7 +34,7 @@ export class BackendService {
 
   public getMeasurements(): Observable<IMeasurement[]> {
     // !!! `http://YOUR-IP:8090/sensor/...` !!!
-    return this.http.get<IMeasurement[]>("http://192.168.1.4:8090/measurement").pipe(
+    return this.http.get<IMeasurement[]>("http://192.168.17.173:8090/measurement").pipe(
       map(data => {
 
         const serializedData = JSON.stringify(data);

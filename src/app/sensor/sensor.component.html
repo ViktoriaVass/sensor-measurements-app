@@ -1,13 +1,23 @@
 <ActionBar title="My Sensors"></ActionBar>
 <ScrollView>
   <StackLayout>
-    <StackLayout *ngFor="let sensor of this.storeService.sensors" [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
-      <Label [text]="sensor.name" class="sensor-name-text" (tap)="onSensorTap(sensor.sensor_id)"></Label>
+    <StackLayout *ngFor="let sensor of this.storeService.sensors">
+      <Label [text]="sensor.name" class="sensor-name-text"></Label>
+      <StackLayout [nsRouterLink]="['/sensor', sensor.sensor_id, 'measurements']">
+        <Label [text]="'Last 10 Measurements'" class="sensor-messungen" (tap)="onSensorTap(sensor.sensor_id)"></Label>
+      </StackLayout>
+      <StackLayout [nsRouterLink]="['/chart', sensor.sensor_id, 'measurements']">
+        <Label [text]="'Chart'" class="sensor-chart" (tap)="onChartTap(sensor.sensor_id)"></Label>
+      </StackLayout>
 
       <StackLayout *ngIf="lastMeasurements[sensor.sensor_id]">
-        <Label [text]="'Last Measurement: ' + lastMeasurements[sensor.sensor_id]?.timestamp.replace('T', ' ').slice(0, 16)" class="sensor-label"></Label>
-        <Label [text]="'Temperature: ' + lastMeasurements[sensor.sensor_id]?.temperature + ' °C'" class="sensor-label"></Label>
-        <Label [text]="'Humidity: ' + lastMeasurements[sensor.sensor_id]?.humidity + ' %'" class="sensor-label-last"></Label>
+        <Label
+          [text]="'Last Measurement: ' + lastMeasurements[sensor.sensor_id]?.timestamp.replace('T', ' ').slice(0, 16)"
+          class="sensor-label"></Label>
+        <Label [text]="'Temperature: ' + lastMeasurements[sensor.sensor_id]?.temperature + ' °C'"
+          class="sensor-label"></Label>
+        <Label [text]="'Humidity: ' + lastMeasurements[sensor.sensor_id]?.humidity + ' %'"
+          class="sensor-label-last"></Label>
       </StackLayout>
 
       <StackLayout *ngIf="!lastMeasurements[sensor.sensor_id]">
