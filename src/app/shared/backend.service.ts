@@ -12,12 +12,15 @@ import { IMeasurement } from './interfaces/Measurement';
 })
 export class BackendService {
 
+  ipAddress = "http://192.168.17.173:8090";
   constructor(public storeService: StoreService, private http: HttpClient) {
   }
 
+
+
   public getSensors(): Observable<ISensor[]> {
-    // !!! `http://YOUR-IP:8090/sensor` !!!
-    return this.http.get<ISensor[]>("http://192.168.17.173:8090/sensor").pipe(
+
+    return this.http.get<ISensor[]>(this.ipAddress + "/sensor").pipe(
       map(data => {
 
         const serializedData = JSON.stringify(data);
@@ -33,8 +36,8 @@ export class BackendService {
 
 
   public getMeasurements(): Observable<IMeasurement[]> {
-    // !!! `http://YOUR-IP:8090/sensor/...` !!!
-    return this.http.get<IMeasurement[]>("http://192.168.17.173:8090/measurement").pipe(
+
+    return this.http.get<IMeasurement[]>(this.ipAddress + "/measurement").pipe(
       map(data => {
 
         const serializedData = JSON.stringify(data);
@@ -50,10 +53,10 @@ export class BackendService {
 
   private handleError(error: any) {
     let errorMessage = 'Unknown error occurred';
-  
+
     if (error instanceof HttpErrorResponse) {
       errorMessage = `Server-side Error: ${error.status}, Message: ${error.message}`;
-  
+
       if (error.error) {
         console.error('Error Response:', error.error);
       }
@@ -61,8 +64,8 @@ export class BackendService {
       errorMessage = `An error occurred: ${error.message}`;
       console.error(errorMessage);
     }
-  
+
     return throwError(errorMessage);
-  }  
-  
+  }
+
 }

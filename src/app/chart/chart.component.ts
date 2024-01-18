@@ -27,7 +27,7 @@ export class ChartComponent {
   ) { }
 
   getAllSensorMeasurements(id: number): Observable<IMeasurement[]> {
-    const apiUrl = `http://192.168.17.173:8090/sensor/${id}/measurements`;
+    const apiUrl = this.backendService.ipAddress + `/sensor/${id}/measurements`;
     const sensor = this.storeService.sensors.find((s) => s.sensor_id === id);
 
     this.sensorName = sensor ? sensor.name : '';

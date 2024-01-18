@@ -1,16 +1,18 @@
 <ActionBar title="Chart"></ActionBar>
 
-<GridLayout class="chart-container" rows="*, auto"> 
-    
+<GridLayout class="chart-container" rows="*, auto">
+
     <RadCartesianChart tkExampleTitle>
-        <DateTimeContinuousAxis tkCartesianHorizontalAxis [dateFormat]="getDateFormat()" [majorStepUnit]="getMajorStepUnit()" [majorStep]="getMajorStep()"></DateTimeContinuousAxis>
+        <DateTimeContinuousAxis tkCartesianHorizontalAxis [dateFormat]="getDateFormat()"
+            [majorStepUnit]="getMajorStepUnit()" [majorStep]="getMajorStep()"></DateTimeContinuousAxis>
         <LinearAxis tkCartesianVerticalAxis></LinearAxis>
-        <LineSeries tkCartesianSeries [items]="chartData" categoryProperty="Category" valueProperty="Value"></LineSeries>
-      </RadCartesianChart>
-    
-      <SegmentedBar row="1" selectedIndex="0" (selectedIndexChanged)="onSegmentedBarIndexChanged($event)">
+        <LineSeries tkCartesianSeries [items]="chartData" categoryProperty="Category" valueProperty="Value">
+        </LineSeries>
+    </RadCartesianChart>
+
+    <SegmentedBar row="1" selectedIndex="0" (selectedIndexChanged)="onSegmentedBarIndexChanged($event)">
         <SegmentedBarItem title="1 day"></SegmentedBarItem>
         <SegmentedBarItem title="7 days"></SegmentedBarItem>
         <SegmentedBarItem title="30 days"></SegmentedBarItem>
-      </SegmentedBar>
+    </SegmentedBar>
 </GridLayout>
