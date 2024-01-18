@@ -3,7 +3,7 @@
 <GridLayout class="chart-container" rows="*, auto"> 
     
     <RadCartesianChart tkExampleTitle>
-        <DateTimeCategoricalAxis tkCartesianHorizontalAxis dateFormat="MM/dd"></DateTimeCategoricalAxis>
+        <DateTimeContinuousAxis tkCartesianHorizontalAxis [dateFormat]="getDateFormat()" [majorStepUnit]="getMajorStepUnit()" [majorStep]="getMajorStep()"></DateTimeContinuousAxis>
         <LinearAxis tkCartesianVerticalAxis></LinearAxis>
         <LineSeries tkCartesianSeries [items]="chartData" categoryProperty="Category" valueProperty="Value"></LineSeries>
       </RadCartesianChart>
